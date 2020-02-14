@@ -110,6 +110,7 @@ mmdet/version.py
 
 .vscode
 .idea
+.idea/
 
 # custom
 *.pkl
