@@ -1,22 +1,38 @@
 import torch
-# #创建tensor
-# x=torch.ones(2,2,requires_grad=True)
-# print(x)
-# y = x + 2
-# print(y)
-# z = y * y * 3  #torch中的乘法是对应元素相乘
-# out = z.mean()
-# print(z, out)
-# out.backward()
-# print(x.grad)
+
+#情形1：
+
+x = torch.ones(3,3, requires_grad=True)
+y=x*x+2
+out1=y.sum()
+out1.backward()
+
+print(
+    '\n',x,
+    '\n',y,
+    '\n',x.grad
+)
+
+#若输出结果是一个非标量
+x1 = torch.ones(2,2,requires_grad=True)
+y1 = torch.ones(2,1,requires_grad=True)
+out1=2*torch.mm(x1,y1)
+#不可直接使用out1.backward()
+out1.backward(torch.ones_like(y1))
+print(
+    '\n',y1.grad
+)
 
 
-x = torch.randn(3, requires_grad=True)
-
-y = x * 2
-while y.data.norm() < 1000:
-    y = y * 2
-
-print(x,y)
-
-
+x2 = torch.ones(2,2,requires_grad=True)
+y2 = torch.ones(2,1,requires_grad=True)
+z=2*torch.mm(x2,y2)
+out2=z.sum()
+print(out2)
+#不可直接使用out1.backward()
+out2.backward()
+print(
+    '\n',y2.grad
+)
+with torch.no_grad():
+    print((y2*y2).requires_grad)

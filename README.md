@@ -1,2 +1,10 @@
 # pytorch
-study note of pytorch
+pytorch学习笔记
+
+
+
+[TOC]
+
+# tensor
+# a
+
