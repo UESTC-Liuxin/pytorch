@@ -6,8 +6,7 @@ import matplotlib.pyplot as plt
 x = torch.unsqueeze(torch.linspace(-1, 1, 1000), dim=1)  # x data (tensor), shape=(100, 1)
 y = x.pow(2) + 0.2*torch.rand(x.size())                 # noisy y data (tensor), shape=(100, 1)
 
-plt.ion()   # 画图
-plt.show()
+
 
 class Net(nn.Module):
     def __init__(self,in_feature,out):
@@ -34,7 +33,10 @@ if torch.cuda.is_available():
     net.cuda(device=0)
     x=x.to("cuda")
     y=y.to("cuda")
+print(x.size())
 
+plt.ion()   # 画图
+plt.show()
 for i in range(500):
     prediction=net(x)
     loss=loss_func(prediction,y)
