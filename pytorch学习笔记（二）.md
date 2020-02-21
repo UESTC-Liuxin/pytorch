@@ -8,7 +8,7 @@
 
 ### 基本属性
 
-Moudle可以用add_module添加模块；
+Moudle可以用add_module(name,module)添加模块；
 
 apply(function)将function函数应用于每个子模块和父模块；
 
@@ -79,7 +79,7 @@ model.to(torch.device("cuda:0"))
 
 ```
 
-# Sequential
+## Sequential
 
 一种顺序容器。传入Sequential构造器中的模块会被按照他们传入的顺序依次添加到Sequential之上。相应的，一个由模块组成的顺序词典也可以被传入到Sequential的构造器中。上面的moudle可换个方式写。
 
@@ -114,26 +114,83 @@ class Model(nn.Module):
 
 ```
 
+## minist数据集手写数字识别网络搭建
+
+### 网络框图
+
 <img src="https://pytorch.org/tutorials/_images/mnist.png" style="zoom:80%;" />
 
-## 常用的方法
+### 基本方法介绍
 
+1.**Conv2d**
 
-
+```python
+torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
 ```
+
+   利用指定大小的二维卷积核对输入的多通道二维输入信号进行二维卷积操作的卷积层。
+
+
+Conv2d的参数:
+
+- **in_channels** ([*int*](https://docs.python.org/3/library/functions.html#int)) – 输入通道个数
+- **out_channels** ([*int*](https://docs.python.org/3/library/functions.html#int)) – 输出通道个数
+- **kernel_size** ([*int*](https://docs.python.org/3/library/functions.html#int) *or* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)) – 卷积核大小
+- **stride** ([*int*](https://docs.python.org/3/library/functions.html#int) *or* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)*,* *optional*) –卷积操作的步长。 默认： 1
+- **padding** ([*int*](https://docs.python.org/3/library/functions.html#int) *or* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)*,* *optional*) – 输入数据各维度各边上要补齐0的层数。 默认： 0
+- **dilation** ([*int*](https://docs.python.org/3/library/functions.html#int) *or* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)*,* *optional*) –卷积核各元素之间的距离。 默认： 1
+- **groups** ([*int*](https://docs.python.org/3/library/functions.html#int)*,* *optional*) – 输入通道与输出通道之间相互隔离的连接的个数。 默认：1
+- **bias** ([*bool*](https://docs.python.org/3/library/functions.html#bool)*,* *optional*) – 如果被置为 `True`，向输出增加一个偏差量，此偏差是可学习参数。 默认：`True`
+
+简单解释一下==dilation==参数和==groups==参数：dilation是指的卷积过程中，卷积核有空洞，会漏掉一些值；groups是指每个卷积核需要多少层，比如输入为4 channels，设groups=2，那么每两个通道会用一个卷积层，以一共两层，所以必须channels/groups，必须整除。
+
+<img src="https://github.com/vdumoulin/conv_arithmetic/raw/master/gif/dilation.gif" style="zoom: 33%;" />
+$$
+H_{o u t}=\left\lfloor\frac{H_{i n}+2 \times \text { padding }[0]-\text { dilation }[0] \times\left(\text { kernel }_{-} \operatorname{size}[0]-1\right)-1}{\operatorname{stride}[0]}+1\right]
+$$
+
+2. **nn.ConvTranspose1d**:
+
+   ```python
+   class torch.nn.ConvTranspose2d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1)
+   ```
+
+   反卷积，卷积过程通常以大尺寸输入得到了一个小的尺寸的输出，然而反卷积就是以小尺寸输入获得大尺寸输出。具体的原理和解释可以查看这篇文章：[转置卷积(transposed convolution)/反卷积(deconvolution)](https://blog.csdn.net/lanadeus/article/details/82534425)
+
+3. **MaxPool2d**：
+
+   对输入的多通道信号执行二维最大池化操作。
+
+4. **Linear**
+   ```python
+class torch.nn.Linear(in_features, out_features, bias=True)
+   ```
+线性变换，主要用在全连接层线性变换的：$y=xA^T+bias,其中，A指的是权重需要转置$
+
+Parameters:
+
+   - **in_features** – size of each input sample
+   - **out_features** – size of each output sample
+   - **bias** – If set to False, the layer will not learn an additive bias. Default: `True`
+
+### 开始搭建
+
+一个神经网络的典型训练过程如下：
+
+1. 定义包含一些可学习参数（或者叫权重）的神经网络
+2. 在输入数据集上迭代
+3. 通过网络处理输入
+4. 计算损失（输出和正确答案的距离）
+5. 将梯度反向传播给网络的参数
+6. 更新网络的权重，一般使用一个简单的规则：weight = weight - learning_rate * gradient
+
+```python
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 '''
-一个神经网络的典型训练过程如下：
 
-定义包含一些可学习参数（或者叫权重）的神经网络
-在输入数据集上迭代
-通过网络处理输入
-计算损失（输出和正确答案的距离）
-将梯度反向传播给网络的参数
-更新网络的权重，一般使用一个简单的规则：weight = weight - learning_rate * gradient
 '''
 class Net(nn.Module):
 
@@ -170,6 +227,7 @@ class Net(nn.Module):
 
 net = Net()
 #手动输入
+#通常神经网络的输入都是(batch_size,channel,H,W)
 input = torch.randn(1, 1, 32, 32)
 out = net(input)
 # print(out)
