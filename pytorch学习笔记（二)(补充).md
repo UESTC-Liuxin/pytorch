@@ -126,5 +126,11 @@ for t in range(100):
 plt.ioff()  # 停止画图
 ```
 
+结果：
+
+
+
+[深度](https://github.com/UESTC-Liuxin/pytorch/blob/master/md_img/Exp7_2.gif)
+
 完整代码：
 
