@@ -41,30 +41,68 @@ optimizer = torch.optim.SGD(net.parameters(), lr=0.02)  # 传入 net 的所有�
 # 但是预测值是2D tensor (batch, n_classes)
 loss_func = torch.nn.CrossEntropyLoss()
 
-plt.ion()   # 画图
-plt.show()
-for t in range(20):
-    out = net(x)     # 喂给 net 训练数据 x, 输出分析值
-    loss = loss_func(out, y)     # 计算两者的误差
-    optimizer.zero_grad()   # 清空上一步的残余更新参数值
-    loss.backward()
-    optimizer.step()
 
-    if t % 2 == 0:
-        plt.cla()
-        # 过了一道 softmax 的激励函数后的最大概率才是预测值
-        prediction = torch.max(F.softmax(out,dim=1), 1)[1]
-        pred_y = prediction.data.numpy().squeeze()
-        target_y = y.data.numpy()
-        plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=pred_y, s=100, lw=0, cmap='RdYlGn')
-        accuracy = sum(pred_y == target_y)/200.  # 预测中有多少和真实值一样
-        plt.text(1.5, -4, 'Accuracy=%.2f' % accuracy, fontdict={'size': 20, 'color':  'red'})
-        plt.pause(0.1)
+def train():
+    plt.ion()  # 画图
+    plt.show()
+    for t in range(20):
+        out = net(x)     # 喂给 net 训练数据 x, 输出分析值
+        loss = loss_func(out, y)     # 计算两者的误差
+        optimizer.zero_grad()   # 清空上一步的残余更新参数值
+        loss.backward()
+        optimizer.step()
+
+        if t % 2 == 0:
+            plt.cla()
+            # 过了一道 softmax 的激励函数后的最大概率才是预测值
+            prediction = torch.max(F.softmax(out,dim=1), 1)[1]
+            pred_y = prediction.data.numpy().squeeze()
+            target_y = y.data.numpy()
+            plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=pred_y, s=100, lw=0, cmap='RdYlGn')
+            accuracy = sum(pred_y == target_y)/200.  # 预测中有多少和真实值一样
+            plt.text(1.5, -4, 'Accuracy=%.2f' % accuracy, fontdict={'size': 20, 'color':  'red'})
+            plt.pause(0.1)
+    plt.ioff()  # 停止画图
+
+def save():
+    #保存整个模型
+    torch.save(net,'.\\model\\Exp7.pth')
+    #保存模型的参数,内存小，速度快
+    torch.save(net.state_dict(),'.\\model\\Exp7_dict.pth')
+
+def restore_net():
+    #恢复整个模型
+    net1=torch.load('.\\model\\Exp7.pth')
+    out=net1(x)
+    # 过了一道 softmax 的激励函数后的最大概率才是预测值
+    # copy net1's parameters into net3
+    # plot result
+    plt.subplot(121)
+    plt.title('net1')
+    prediction = torch.max(F.softmax(out, dim=1), 1)[1]
+    pred_y = prediction.data.numpy().squeeze()
+    plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=pred_y, s=100, lw=0, cmap='RdYlGn')
+
+def restore_para():
+    net2=Net(2,2)
+    net2.load_state_dict(torch.load('.\\model\\Exp7_dict.pth'))
+    out=net2(x)
+
+    plt.subplot(122)
+    plt.title('net2')
+    prediction = torch.max(F.softmax(out, dim=1), 1)[1]
+    pred_y = prediction.data.numpy().squeeze()
+    plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=pred_y, s=100, lw=0, cmap='RdYlGn')
 
 
-plt.ioff()  # 停止画图
 
+# train()
+# save()
 # a=torch.randn(2,2)
 # print(a)
 # b=F.softmax(a,dim=0)
 # print(b)
+
+restore_net()
+restore_para()
+plt.show()

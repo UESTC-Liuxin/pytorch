@@ -38,7 +38,7 @@ plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=y.data.numpy(), s=100,
 plt.show()
 ```
 
-​	Exp7_1
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Exp7_1.png" alt="Exp7_1" style="zoom:50%;" />
 
 ## 网路搭建
 
@@ -128,9 +128,54 @@ plt.ioff()  # 停止画图
 
 结果：
 
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Exp7_2.gif" style="zoom:50%;" />
+
+## 模型的保存与加载
+
+在训练好了之后，通常会保存我们的模型以作为，pytorch提供了两种保存模型的方式：
+
+1. 保存整个模型（包括了网络结构和para，加载时不能修改模型，内存消耗大，但是方便）
+
+2. 保存模型的参数（保存了para，加载时可以修改模型，内存消耗小，速度更快，但是需要重新定义网络结构）
+
+   ==注意：实际上保存的后缀为pth和pkl并不重要，在使用时基本没有差别，并且都是二进制形式==
+
+   ```python
+   def save():
+       #保存整个模型
+       torch.save(net,'.\\model\\Exp7.pth')
+       #保存模型的参数,内存小，速度快
+       torch.save(net.state_dict(),'.\\model\\Exp7_dict.pth')
+   
+   #第一种保存的恢复
+   def restore_net():
+       #恢复整个模型
+       net1=torch.load('.\\model\\Exp7.pth')
+       out=net1(x)
+       # 过了一道 softmax 的激励函数后的最大概率才是预测值
+       # copy net1's parameters into net3
+       # plot result
+       plt.subplot(121)
+       plt.title('net1')
+       prediction = torch.max(F.softmax(out, dim=1), 1)[1]
+       pred_y = prediction.data.numpy().squeeze()
+       plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=pred_y, s=100, lw=0, cmap='RdYlGn')
+   
+   #第二种恢复
+   def restore_para():
+       net2=Net(2,2)
+       net2.load_state_dict(torch.load('.\\model\\Exp7_dict.pth'))
+       out=net2(x)
+   
+       plt.subplot(122)
+       plt.title('net2')
+       prediction = torch.max(F.softmax(out, dim=1), 1)[1]
+       pred_y = prediction.data.numpy().squeeze()
+       plt.scatter(x.data.numpy()[:, 0], x.data.numpy()[:, 1], c=pred_y, s=100, lw=0, cmap='RdYlGn')
+   ```
+
+   
 
 
-[深度](https://github.com/UESTC-Liuxin/pytorch/blob/master/md_img/Exp7_2.gif)
-
-完整代码：
+完整代码：https://github.com/UESTC-Liuxin/pytorch/blob/master/Exp7.py
 
