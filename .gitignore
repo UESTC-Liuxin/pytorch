@@ -124,7 +124,8 @@ work_dirs/
 
 # Images
 *.jpg
-
+# dataset
+DATA/
 
 # zip
 *.zip
