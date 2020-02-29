@@ -122,8 +122,10 @@ for epoch in range(EPOCH):
 plt.ioff()
 plt.show()
 
+
 # visualize in 3D plot
 view_data = train_data.train_data[:200].view(-1, 28*28).type(torch.FloatTensor)/255.
+autoencoder =autoencoder.cpu()
 encoded_data, _ = autoencoder(view_data)
 fig = plt.figure(2); ax = Axes3D(fig)
 X, Y, Z = encoded_data.data[:, 0].numpy(), encoded_data.data[:, 1].numpy(), encoded_data.data[:, 2].numpy()
