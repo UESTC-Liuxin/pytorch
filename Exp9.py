@@ -12,7 +12,7 @@ data_root=os.path.join(root,'DATA')
 # Mnist digits dataset
 
 # Hyper Parameters
-EPOCH = 1           # 训练整批数据多少次, 为了节约时间, 我们只训练一次
+EPOCH = 10           # 训练整批数据多少次, 为了节约时间, 我们只训练一次
 BATCH_SIZE = 50
 LR = 0.001          # 学习率
 
@@ -125,4 +125,4 @@ if __name__ == '__main__':
                 #下面这个操作就很叼，直接将每个对应元素做逻辑相等转换为int再相加，除以总数就是准确率
                 accuracy = float((pred_y == val_y.data.numpy()).astype(int).sum()) / float(val_y.size(0))
                 print('Epoch: ', epoch, '| train loss: %.4f' % loss.cpu().data.numpy(), '| test accuracy: %.2f' % accuracy)
-            save_model(net)
+    save_model(net)
