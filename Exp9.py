@@ -41,7 +41,7 @@ val_data = torchvision.datasets.MNIST(
 # shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)
 
 val_x = torch.unsqueeze(val_data.data, dim=1).type(torch.FloatTensor)[:2000]/255
-# print(test_data.data.size())
+print(val_x.data.size())
 val_y = val_data.targets[:2000]
 if torch.cuda.is_available():
    val_x= val_x.cuda()
