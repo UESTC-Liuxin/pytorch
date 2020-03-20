@@ -1,15 +1,12 @@
-class test():
-    def __init__(self,data=1):
-        self.data = data
+import numpy as np
 
-    def __iter__(self):
-        return self
-    def __next__(self):
-        if self.data > 5:
-            raise StopIteration
-        else:
-            self.data+=1
-            return self.data
-t = test(3)   
-for i in range(3):
-    print(t.__next__())
+def z_score(x, axis):
+    x = np.array(x).astype(float)
+    xr = np.rollaxis(x, axis=axis)
+    xr -= np.mean(x, axis=axis)
+    xr /= np.std(x, axis=axis)
+    # print(x)
+    return x
+
+a=np.random.randint(10,size=10)
+

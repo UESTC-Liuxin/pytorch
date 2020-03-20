@@ -137,6 +137,7 @@ viz.histogram(
         ylabel='count',
         title='histogram',
         numbins=10   #利用numbins对数据单位进行划分，默认是30组
+        
     )
 )
 # 热力图，地理图，表面图
