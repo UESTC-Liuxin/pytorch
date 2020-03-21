@@ -58,40 +58,58 @@ testloader=Data.DataLoader(
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
+# class CifarNet(nn.Module):
+#     def __init__(self):
+#         super(CifarNet,self).__init__()
+#         self.Conv=nn.Sequential(
+#             nn.Conv2d(
+#                 in_channels=3,
+#                 out_channels=6,
+#                 kernel_size=5,
+#                 padding=2
+#             ),#if stride=1 , padding=(kernel_size-1)/2
+#             nn.MaxPool2d(2,2),
+#             nn.ReLU(),
+#             nn.Conv2d(
+#                 in_channels=6,
+#                 out_channels=16,
+#                 kernel_size=5
+#             ),
+#             nn.MaxPool2d(2,2),
+#             nn.ReLU()
+#         )
+#         self.Fc=nn.Sequential(
+#             nn.Linear(16*6*6,20),
+#             nn.ReLU(),
+#             nn.Linear(20,100),
+#             nn.ReLU(),
+#             nn.Linear(100,10)
+#         )
+#
+#     def forward(self, x):
+#         x=self.Conv(x)
+#         x=x.view(-1,16*6*6)
+#         x=self.Fc(x)
+#         return x
 class CifarNet(nn.Module):
     def __init__(self):
-        super(CifarNet,self).__init__()
-        self.Conv=nn.Sequential(
-            nn.Conv2d(
-                in_channels=3,
-                out_channels=6,
-                kernel_size=5,
-                padding=2
-            ),#if stride=1 , padding=(kernel_size-1)/2
-            nn.MaxPool2d(2,2),
-            nn.ReLU(),
-            nn.Conv2d(
-                in_channels=6,
-                out_channels=16,
-                kernel_size=5
-            ),
-            nn.MaxPool2d(2,2),
-            nn.ReLU()
-        )
-        self.Fc=nn.Sequential(
-            nn.Linear(16*6*6,20),
-            nn.ReLU(),
-            nn.Linear(20,100),
-            nn.ReLU(),
-            nn.Linear(100,10)
-        )
+        super(CifarNet, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
 
     def forward(self, x):
-        x=self.Conv(x)
-        x=x.view(-1,16*6*6)
-        x=self.Fc(x)
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
         return x
-
 
 
 
@@ -116,17 +134,20 @@ def data_analyze(dataset):
     plt.show()
 
 viz = Visdom(server='http://[::1]', port=8097,env='Cifar Loss')
-viz.line([0.], [0.], win='train_loss', opts=dict(title='train loss'))
-
+# viz.line([0.], [0.], win='train_loss', opts=dict(title='train loss'))
+# viz.line([0.], [0.], win='test_acc', opts=dict(title='test acc'))
 if __name__ == '__main__':
     net = CifarNet()
     optimizer = torch.optim.SGD(net.parameters(), lr=LR,momentum=0.9)
     loss_func = nn.CrossEntropyLoss()
 
+
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     net.to(device)
     # 随机获取训练图片
     for epoch in range(EPOCH):
+        train_win='train{}_loss'.format(epoch)
+        viz.line([0.], [0.], win=train_win, opts=dict(title=train_win))
         for step,(batch_x,batch_y) in enumerate(trainloader):
             batch_x,batch_y=batch_x.to(device),batch_y.to(device)
             out=net(batch_x)
@@ -135,10 +156,22 @@ if __name__ == '__main__':
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            viz.line([loss.item()], [step], win='train_loss', update='append')
+            viz.line([loss.item()], [step], win=train_win, update='append')
             if step%500==0:
-                print('epoch:',epoch,'step:',step,'loss:{:.4f}'.format(loss.data))
-                #visualize
+                print('epoch:', epoch, 'step:', step, 'loss:{:.3f}'.format(loss.data))
+        test_win = 'test{}_acc'.format(epoch)
+        viz.line([0.], [0.], win=test_win, opts=dict(title=test_win))
+        total=0
+        correct=0
+        #TEST
+        for step1, (batch_x, batch_y) in enumerate(testloader):
+            batch_x, batch_y = batch_x.to(device), batch_y.to(device)
+            pred_x=net(batch_x)
+            _, predicted = torch.max(pred_x.data, 1)
+            total += batch_y.size(0)
+            correct += (predicted == batch_y).sum().item()
+            acc=correct/total
+            viz.line([acc], [step1], win=test_win, update='append')
 
 
     # data_analyze(trainset)
