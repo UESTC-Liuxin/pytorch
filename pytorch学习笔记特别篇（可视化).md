@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 # visdom学习笔记
 
 ## visdom介绍
@@ -320,3 +324,183 @@ viz.surf(
 ```
 
 [完整代码](https://github.com/UESTC-Liuxin/pytorch/blob/master/visdom_test.py)
+
+# tensorboardX学习笔记
+
+ensorFlow 附加的工具Tensorboard 是一个很好用的视觉化工具。他可以记录数字，影像或者是声音资讯，对于观察类神经网路训练的过程非常有帮助。tensorboardX 的目的就是让其他tensorboard 的功能都可以轻易的被非TensorFlow 的框架使用。官方教程：https://tensorboardx.readthedocs.io/en/latest/tensorboard.html
+
+
+## 安装
+
+```bash
+pip install tensorboardX
+pip install tensorflow
+```
+
+## 初始化
+
+tensorboard所有操作都是基于SummaryWriter类，以及类中的方法
+
+```python
+from tensorboardX import SummaryWriter
+writer = SummaryWriter()
+```
+**SummaryWriter主要方法**
+
+**标量**
+
+- add_scalar(self, tag, scalar_value, global_step=None, walltime=None)
+- add_scalars(self, main_tag, tag_scalar_dict, global_step=None, walltime=None)
+- export_scalars_to_json(self, path)
+- add_custom_scalars_multilinechart(self, tags, category='default', title='untitled')
+- add_custom_scalars_marginchart(self, tags, category='default', title='untitled')
+- add_custom_scalars(self, layout)
+
+**param**
+
+`add_hparams`**(***hparam_dict=None***,** *metric_dict=None***,** *name=None***,** *global_step=None***)**
+
+```python
+from tensorboardX import SummaryWriter
+with SummaryWriter() as w:
+    for i in range(5):
+        w.add_hparams({'lr': 0.1*i, 'bsize': i},
+                      {'hparam/accuracy': 10*i, 'hparam/loss': 10*i})
+```
+
+**图像图表**
+
+- add_histogram(self, tag, values, global_step=None, bins='tensorflow', walltime=None)
+
+  ==记录直方图很耗CPU 资源，不要常用==
+
+- add_image(self, tag, img_tensor, global_step=None, walltime=None, dataformats='CHW')
+  
+-  add_images(self, tag, img_tensor, global_step=None, walltime=None, dataformats='NCHW')
+   
+- add_image_with_boxes(self, tag, img_tensor, box_tensor, global_step=None,walltime=None, dataformats='CHW', **kwargs)**
+  
+- 将matplotlib图形渲染成图像并将其添加到摘要中add_figure(self, tag, figure, global_step=None, close=True, walltime=None)
+  
+-  add_graph(self, model, input_to_model=None, verbose=False, **kwargs)
+   
+- add_pr_curve(self, tag, labels, predictions, global_step=None,num_thresholds=127, weights=None, walltime=None)pr：precision-recall
+  
+- add_pr_curve_raw(self, tag, true_positive_counts  , false_positive_counts, true_negative_counts,  false_negative_counts,precision,  recall,global_step=None,num_thresholds=127,weights=None, walltime=None)
+  
+- `add_image_with_boxes`**(***tag***,** *img_tensor***,** *box_tensor***,** *global_step=None***,** *walltime=None***,** *dataformats='CHW'***,** *labels=None***,** ***kwargs***)**==牛逼==
+
+**多媒体**
+
+- add_video(self, tag, vid_tensor, global_step=None, fps=4, walltime=None)
+  
+- add_audio(self, tag, snd_tensor, global_step=None, sample_rate=44100, walltime=None)
+  
+- add_text(self, tag, text_string, global_step=None, walltime=None)
+  
+- add_embedding(self, mat, metadata=None, label_img=None, global_step=None, tag='default', metadata_header=None)
+  
+    
+  
+## 主要参数
+
+- tag： 标签，数据标识符号，名称(string):
+
+- main_tag：标签组名称(string)
+
+- tag_scalar_dict：标签键值对,（dict）；
+
+- scalar_value : 要保存的值(float or string/blobname)
+
+- global_step : 要记录的全部步长值(int)
+
+- walltime (float): Optional override default walltime (time.time()) of event可选覆盖默认的
+
+- walltime（time.time（）），以秒为单位事件的时期
+
+- dataformats：CHW（默认），NCHW（默认），HW，NHWC
+
+- img_tensor (torch.Tensor, numpy.array, or string/blobname): 默认shape为（3，H，W）。可以使用
+
+  ==torchvision.utils.make_grid（）==将一批张量转换为3xHxW格式或调用add_images完成。也可以设置为
+
+  （1，H，W）、（H，W）。为避免出错，建议使用默认值CHW（channel在前，更符合一般习惯），
+
+- img_tensor需要和dataformats匹配。
+
+- model (torch.nn.Module): ==添加模型图graph==
+
+- input_to_model (torch.Tensor or list of torch.Tensor): 喂入模型的数据.
+
+## Example
+
+```python
+# demo.py
+import os
+import time
+import torch
+import torchvision.utils as vutils
+import numpy as np
+import torchvision.models as models
+from torchvision import datasets
+import torchvision.transforms as transforms
+from tensorboardX import SummaryWriter
+
+TIMESTAMP = time.strftime("%Y-%m-%d-%H-%M-%S")
+log_dir = 'logs/test/' + TIMESTAMP
+resnet18 = models.resnet18(False)
+writer = SummaryWriter(log_dir=log_dir)
+writer.flush()
+sample_rate = 44100
+freqs = [262, 294, 330, 349, 392, 440, 440, 440, 440, 440, 440]
+# with SummaryWriter() as w:
+#     for i in range(5):
+#         w.add_hparams({'lr': 0.1*i, 'bsize': i},
+#                       {'hparam/accuracy': 10*i, 'hparam/loss': 10*i})
+for n_iter in range(100):
+
+    dummy_s1 = torch.rand(1)
+    dummy_s2 = torch.rand(1)
+    # data grouping by `slash`
+    writer.add_scalar('data/scalar1', dummy_s1[0], n_iter)
+    writer.add_scalar('data/scalar2', dummy_s2[0], n_iter)
+
+    writer.add_scalars('data/scalar_group', {'xsinx': n_iter * np.sin(n_iter),
+                                             'xcosx': n_iter * np.cos(n_iter),
+                                             'arctanx': np.arctan(n_iter)}, n_iter)
+
+    dummy_img = torch.rand(32, 3, 64, 64)  # output from network
+    if n_iter % 10 == 0:
+        x = vutils.make_grid(dummy_img, normalize=True, scale_each=True)
+        writer.add_image('Image', x, n_iter)
+
+        dummy_audio = torch.zeros(sample_rate * 2)
+        for i in range(x.size(0)):
+            # amplitude of sound should in [-1, 1]
+            dummy_audio[i] = np.cos(freqs[n_iter // 10] * np.pi * float(i) / float(sample_rate))
+        writer.add_audio('myAudio', dummy_audio, n_iter, sample_rate=sample_rate)
+
+        writer.add_text('Text', 'text logged at step:' + str(n_iter), n_iter)
+
+        # for name, param in resnet18.named_parameters():
+        #     writer.add_histogram(name, param.clone().cpu().data.numpy(), n_iter)
+
+        # needs tensorboard 0.4RC or later
+        writer.add_pr_curve('xoxo', np.random.randint(2, size=100), np.random.rand(100), n_iter)
+
+
+dataset = datasets.MNIST('mnist', train=False, download=True)
+images = dataset.test_data[:100].float()
+label = dataset.test_labels[:100]
+print(images.size())
+print(label.size())
+features = images.view(100, 784)
+writer.add_embedding(features, metadata=label, label_img=images.unsqueeze(1))
+#
+writer.add_image_with_boxes('CoCo',torch.rand(3,128,128),torch.tensor([[10,10,50,50]]))
+# export scalar data to JSON for external processing
+writer.export_scalars_to_json("./all_scalars.json")
+writer.close()
+
+```
+

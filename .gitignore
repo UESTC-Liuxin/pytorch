@@ -111,7 +111,7 @@ mmdet/version.py
 .vscode
 .idea
 .idea/
-
+*.xml
 # custom
 *.pkl
 *.pkl.json
@@ -126,6 +126,7 @@ work_dirs/
 *.jpg
 # dataset
 DATA/
+logs/
 
 # zip
 *.zip

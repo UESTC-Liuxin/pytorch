@@ -58,39 +58,11 @@ testloader=Data.DataLoader(
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-class CifarNet(nn.Module):
+class ResNet(nn.Module):
     def __init__(self):
-        super(CifarNet,self).__init__()
-        self.Conv=nn.Sequential(
-            nn.Conv2d(
-                in_channels=3,
-                out_channels=6,
-                kernel_size=5,
-                padding=2
-            ),#if stride=1 , padding=(kernel_size-1)/2
-            nn.MaxPool2d(2,2),
-            nn.ReLU(),
-            nn.Conv2d(
-                in_channels=6,
-                out_channels=16,
-                kernel_size=5
-            ),
-            nn.MaxPool2d(2,2),
-            nn.ReLU()
-        )
-        self.Fc=nn.Sequential(
-            nn.Linear(16*6*6,20),
-            nn.ReLU(),
-            nn.Linear(20,100),
-            nn.ReLU(),
-            nn.Linear(100,10)
-        )
+        super(ResNet,self).__init__()
+        pass
 
-    def forward(self, x):
-        x=self.Conv(x)
-        x=x.view(x.size()[0],-1)
-        x=self.Fc(x)
-        return x
 
 
 
@@ -117,8 +89,6 @@ viz = Visdom(server='http://[::1]', port=8097,env='Cifar Loss')
 # viz.line([0.], [0.], win='train_loss', opts=dict(title='train loss'))
 # viz.line([0.], [0.], win='test_acc', opts=dict(title='test acc'))
 if __name__ == '__main__':
-    data_analyze(trainset)
-    '''
     net = CifarNet()
     writer = SummaryWriter( comment="myresnet")
     #绘制网络框图
@@ -167,4 +137,3 @@ if __name__ == '__main__':
             writer.add_scalar('Test', acc, step1)
 
     # data_analyze(trainset)
-    '''

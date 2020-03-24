@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a40ce695-0ebf-46ee-a709-c1750b85e6a8" name="Default Changelist" comment="">
+    <list default="true" id="83f4586d-cbab-4800-9290-035a0834d18d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Exp13.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tensorboardX_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Exp12.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp12.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytorch学习笔记特别篇（visdom).md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytorch学习笔记（三）CIFR.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,65 +23,21 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1XbOIQivEWQ9gtVqeIH5fgRGKMe" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="1ZQgx2TMW0pcTwQakjsBbbtFLgo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings>
-        <option name="useSoftWraps" value="true" />
-      </console-settings>
-    </option>
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\CV\pytorch\md_img" />
-    </key>
   </component>
   <component name="RunManager" selected="Python.Exp12">
-    <configuration name="Exp10" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pytorch" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exp10.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="Exp12" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,29 +82,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="pytorch" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="visdom_demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="tensorboardX_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -170,29 +95,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visdom_demo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="visdom_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pytorch" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visdom_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorboardX_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -204,57 +107,25 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Exp12" />
-        <item itemvalue="Python.visdom_test" />
-        <item itemvalue="Python.visdom_demo" />
+        <item itemvalue="Python.tensorboardX_test" />
         <item itemvalue="Python.Exp9" />
-        <item itemvalue="Python.Exp10" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a40ce695-0ebf-46ee-a709-c1750b85e6a8" name="Default Changelist" comment="" />
-      <created>1581311246553</created>
+      <changelist id="83f4586d-cbab-4800-9290-035a0834d18d" name="Default Changelist" comment="" />
+      <created>1584776974660</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1581311246553</updated>
-      <workItem from="1582259383257" duration="13583000" />
-      <workItem from="1582431392817" duration="10846000" />
-      <workItem from="1582457942456" duration="1344000" />
-      <workItem from="1582633257520" duration="3292000" />
-      <workItem from="1582686841684" duration="23983000" />
-      <workItem from="1582880599910" duration="5428000" />
-      <workItem from="1582944662446" duration="9597000" />
-      <workItem from="1582967957060" duration="739000" />
-      <workItem from="1583108800930" duration="1271000" />
-      <workItem from="1583198648162" duration="546000" />
-      <workItem from="1583219559913" duration="34000" />
-      <workItem from="1583219602459" duration="3000" />
-      <workItem from="1583223172569" duration="4000" />
-      <workItem from="1583223245734" duration="5007000" />
-      <workItem from="1584094364460" duration="686000" />
-      <workItem from="1584102889225" duration="3688000" />
-      <workItem from="1584155891268" duration="17119000" />
-      <workItem from="1584275446333" duration="1886000" />
-      <workItem from="1584410287438" duration="14940000" />
-      <workItem from="1584621646104" duration="59114000" />
-      <workItem from="1584696900842" duration="6954000" />
-      <workItem from="1584775833076" duration="257000" />
+      <updated>1584776974660</updated>
+      <workItem from="1584776976323" duration="20398000" />
+      <workItem from="1584834923805" duration="716000" />
+      <workItem from="1584864274725" duration="221000" />
+      <workItem from="1585050142477" duration="810000" />
     </task>
     <servers />
   </component>
@@ -262,94 +133,30 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="588" y="214" width="800" height="677" key="#Vim_Emulation" timestamp="1584699285565">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="588" y="214" width="800" height="677" key="#Vim_Emulation/67.27.1853.1053@67.27.1853.1053" timestamp="1584699285565" />
-    <state x="588" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583227993241">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="588" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1583227993241" />
-    <state x="495" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584104722445">
+    <state x="548" y="156" key="FileChooserDialogImpl" timestamp="1584864487398">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="495" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1584104722445" />
-    <state x="729" y="265" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584711610617">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="549" y="186" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584343365383" />
-    <state x="729" y="265" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1584711610617" />
-    <state width="1799" height="220" key="GridCell.Tab.0.bottom" timestamp="1584711612237">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584695950580" />
-    <state width="1799" height="220" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1584711612237" />
-    <state width="1799" height="220" key="GridCell.Tab.0.center" timestamp="1584711612237">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584695950580" />
-    <state width="1799" height="220" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1584711612237" />
-    <state width="1799" height="220" key="GridCell.Tab.0.left" timestamp="1584711612237">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584695950580" />
-    <state width="1799" height="220" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1584711612237" />
-    <state width="1799" height="220" key="GridCell.Tab.0.right" timestamp="1584711612237">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584695950580" />
-    <state width="1799" height="220" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1584711612237" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1582721640137">
+    <state x="548" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584864487398" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584806093408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582721640137" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1582721640137">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584806093408" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584806093408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1582721640137" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1582721640137">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584806093408" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584806093408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1582721640137" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1582721640137">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584806093408" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584806093408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1582721640137" />
-    <state x="395" y="120" key="SettingsEditor" timestamp="1584776088818">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="272" y="73" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582701847459" />
-    <state x="395" y="120" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1584776088818" />
-    <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1582259908495">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582259908495" />
-    <state x="379" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582707403173">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="379" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1582707403173" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1584698810711">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1584698810711" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="params" />
-      </configuration>
-    </watches-manager>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584806093408" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pytorch$test.coverage" NAME="test Coverage Results" MODIFIED="1582887633575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Exp9.coverage" NAME="Exp9 Coverage Results" MODIFIED="1584160668201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Exp10.coverage" NAME="Exp10 Coverage Results" MODIFIED="1584094373847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Exp8.coverage" NAME="Exp8 Coverage Results" MODIFIED="1582458040334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$visdom_test.coverage" NAME="visdom_test Coverage Results" MODIFIED="1584426447380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$visdom_demo.coverage" NAME="visdom_demo Coverage Results" MODIFIED="1584185114204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Ex6.coverage" NAME="Ex6 Coverage Results" MODIFIED="1582447453259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Exp7.coverage" NAME="Exp7 Coverage Results" MODIFIED="1582434587575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Exp11.coverage" NAME="Exp11 Coverage Results" MODIFIED="1583910550848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$Exp12.coverage" NAME="Exp12 Coverage Results" MODIFIED="1584703087688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch$tensorboardX_test.coverage" NAME="tensorboardX_test Coverage Results" MODIFIED="1584805349852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch$Exp9.coverage" NAME="Exp9 Coverage Results" MODIFIED="1584780974259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch$Exp12.coverage" NAME="Exp12 Coverage Results" MODIFIED="1585050957138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
