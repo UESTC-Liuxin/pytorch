@@ -117,8 +117,6 @@ viz = Visdom(server='http://[::1]', port=8097,env='Cifar Loss')
 # viz.line([0.], [0.], win='train_loss', opts=dict(title='train loss'))
 # viz.line([0.], [0.], win='test_acc', opts=dict(title='test acc'))
 if __name__ == '__main__':
-    data_analyze(trainset)
-    '''
     net = CifarNet()
     writer = SummaryWriter( comment="myresnet")
     #绘制网络框图
@@ -167,4 +165,3 @@ if __name__ == '__main__':
             writer.add_scalar('Test', acc, step1)
 
     # data_analyze(trainset)
-    '''

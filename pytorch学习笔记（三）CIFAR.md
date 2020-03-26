@@ -12,7 +12,7 @@
 - 权值太大，学习率就必须非常小，也会引发数值问题
 - 收敛会更快
 
-关于归一化的一些理解：https://blog.csdn.net/program_developer/article/details/78637711
+关于归一化的一些理解：https://blog.csdn.net/program_developer/article/details/78637711。
 
 ```python
 transform = transforms.Compose(
@@ -76,6 +76,14 @@ def data_analyze(dataset):
     fig2.suptitle('Images')
     plt.show()
 ```
+
+训练集的分布：10个类别均有5000个样本:`'plane', 'car', 'bird', 'cat','deer', 'dog', 'frog', 'horse', 'ship', 'truck'`
+
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Exp12_1.png" style="zoom:50%;" />
+
+图片的信息，都是（28，28，3)的图片，同时在dataset直接读出来的也是numpy格式的（28，28，，3)的图片。
+
+![](https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Exp12_2.png)
 
 ## 网络构建
 
@@ -172,4 +180,4 @@ if __name__ == '__main__':
     # data_analyze(trainset)
 ```
 
-最后效果不怎么好，于是我决定在后面换成残差网络。
+最后效果不怎么好，准确率一直在40%左右，于是我决定在后面换成残差网络，看来普通网络还是不大行。

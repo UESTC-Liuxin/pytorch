@@ -5,10 +5,10 @@ import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.utils.data as Data
 import torch.nn.functional as F
-from visdom import Visdom
 import matplotlib.pyplot as plt
 import numpy as np
 from tensorboardX import SummaryWriter
+from resnet import ResNet18
 
 # vis = visdom.Visdom()
 # vis.text('Hello, world!')
@@ -58,12 +58,6 @@ testloader=Data.DataLoader(
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-class ResNet(nn.Module):
-    def __init__(self):
-        super(ResNet,self).__init__()
-        pass
-
-
 
 
 def data_analyze(dataset):
@@ -85,11 +79,8 @@ def data_analyze(dataset):
     plt.show()
 
 
-viz = Visdom(server='http://[::1]', port=8097,env='Cifar Loss')
-# viz.line([0.], [0.], win='train_loss', opts=dict(title='train loss'))
-# viz.line([0.], [0.], win='test_acc', opts=dict(title='test acc'))
 if __name__ == '__main__':
-    net = CifarNet()
+    net = ResNet18()
     writer = SummaryWriter( comment="myresnet")
     #绘制网络框图
     with writer:

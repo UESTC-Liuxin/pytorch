@@ -51,8 +51,10 @@ for n_iter in range(100):
         # needs tensorboard 0.4RC or later
         writer.add_pr_curve('xoxo', np.random.randint(2, size=100), np.random.rand(100), n_iter)
 
-
-dataset = datasets.MNIST('mnist', train=False, download=True)
+root=os.getcwd()
+data_root=os.path.join(root,'DATA')
+print(data_root)
+dataset = datasets.MNIST(root=data_root,train=False, download=False)
 images = dataset.test_data[:100].float()
 label = dataset.test_labels[:100]
 print(images.size())
