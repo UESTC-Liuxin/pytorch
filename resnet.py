@@ -68,7 +68,7 @@ class Bottleneck(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, block, num_blocks, num_classes=10):
+    def __init__(self, block, num_blocks,input_size,num_classes=10,):
         super(ResNet, self).__init__()
         self.in_planes = 64
 
@@ -80,22 +80,21 @@ class ResNet(nn.Module):
         self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
         self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
         self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=2)
-        self.linear = nn.Linear(512 * block.expansion, num_classes)
+        f=lambda x: x//32
+        self.linear = nn.Linear(512 * block.expansion*f(input_size[0]*f(input_size[1])), num_classes)
 
     def _make_layer(self, block, planes, num_blocks, stride):
         strides = [stride] + [1] * (num_blocks - 1)
-        print(strides)
         layers = []
         for stride in strides:
             layers.append(block(self.in_planes, planes, stride))
+            # 这里解释一下为什么要有个expansion，因为resnet的残差结构当中最后一个1x1的卷积的filters=前两个的4倍
             self.in_planes = planes * block.expansion
         return nn.Sequential(*layers)
 
     def forward(self, x):
         out =self.conv1(x)
-        print(x.size())
         out = F.relu(self.bn1(out))
-        print(x.size())
         out = self.layer1(out)
         out = self.layer2(out)
         out = self.layer3(out)
@@ -107,23 +106,23 @@ class ResNet(nn.Module):
 
 
 def ResNet18():
-    return ResNet(BasicBlock, [2, 2, 2, 2])
+    return ResNet(BasicBlock, [2, 2, 2, 2],input_size=(32,32))
 
 
 def ResNet34():
-    return ResNet(BasicBlock, [3, 4, 6, 3])
+    return ResNet(BasicBlock, [3, 4, 6, 3],input_size=(32,32))
 
 
 def ResNet50():
-    return ResNet(Bottleneck, [3, 4, 6, 3])
+    return ResNet(Bottleneck, [3, 4, 6, 3],input_size=(32,32))
 
 
 def ResNet101():
-    return ResNet(Bottleneck, [3, 4, 23, 3])
+    return ResNet(Bottleneck, [3, 4, 23, 3],input_size=(32,32))
 
 
 def ResNet152():
-    return ResNet(Bottleneck, [3, 8, 36, 3])
+    return ResNet(Bottleneck, [3, 8, 36, 3],input_size=(32,32))
 
 
 def test():
@@ -139,7 +138,7 @@ if __name__ == '__main__':
     writer = SummaryWriter(log_dir=log_dir)
     net = ResNet18()
 
-    x=torch.rand(1,3,32, 32)
+    x=torch.rand(1,3,256, 256)
     out=net(x)
     print(net)
     # with writer:

@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83f4586d-cbab-4800-9290-035a0834d18d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pytorch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pytorch.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exp12.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp12.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exp13.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp13.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all_scalars.json" beforeDir="false" afterPath="$PROJECT_DIR$/all_scalars.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pytorch学习笔记（三）CIFAR.md" beforeDir="false" afterPath="$PROJECT_DIR$/pytorch学习笔记（三）CIFAR.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensorboardX_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorboardX_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytorch学习笔记（四）ResNet.md" beforeDir="false" afterPath="$PROJECT_DIR$/pytorch学习笔记（四）ResNet.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/resnet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +58,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Exp9" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Exp13" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -77,7 +71,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exp9.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exp13.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,10 +149,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.resnet" />
-        <item itemvalue="Python.tensorboardX_test" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.Exp13" />
+        <item itemvalue="Python.tensorboardX_test" />
         <item itemvalue="Python.Exp12" />
-        <item itemvalue="Python.Exp9" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +171,13 @@
       <workItem from="1584864274725" duration="221000" />
       <workItem from="1585050142477" duration="2415000" />
       <workItem from="1585123347532" duration="2226000" />
-      <workItem from="1585145093589" duration="17450000" />
+      <workItem from="1585145093589" duration="17649000" />
+      <workItem from="1585234325156" duration="552000" />
+      <workItem from="1585312218970" duration="2321000" />
+      <workItem from="1585314736202" duration="2553000" />
+      <workItem from="1585368421454" duration="27000" />
+      <workItem from="1585654498557" duration="25318000" />
+      <workItem from="1585981479824" duration="8846000" />
     </task>
     <servers />
   </component>
@@ -185,36 +185,41 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="548" y="156" key="FileChooserDialogImpl" timestamp="1584864487398">
+    <state x="548" y="156" key="FileChooserDialogImpl" timestamp="1585368446790">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584864487398" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585233640862">
+    <state x="548" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585368446790" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585991563653">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585233640862" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585233640861">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585991563653" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585991563653">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585233640861" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585233640861">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585991563653" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585991563653">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585233640861" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585233640862">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585991563653" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585991563653">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585233640862" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585991563653" />
     <state x="272" y="57" key="SettingsEditor" timestamp="1585196334330">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="272" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585196334330" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585748620762">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585748620762" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pytorch$tensorboardX_test.coverage" NAME="tensorboardX_test Coverage Results" MODIFIED="1585228880396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytorch$Exp9.coverage" NAME="Exp9 Coverage Results" MODIFIED="1584780974259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$test.coverage" NAME="test Coverage Results" MODIFIED="1585123464805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch$test.coverage" NAME="test Coverage Results" MODIFIED="1585990769902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch$Exp13.coverage" NAME="Exp13 Coverage Results" MODIFIED="1585234401073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytorch$Exp12.coverage" NAME="Exp12 Coverage Results" MODIFIED="1585050957138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch$resnet.coverage" NAME="resnet Coverage Results" MODIFIED="1585233640851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch$resnet.coverage" NAME="resnet Coverage Results" MODIFIED="1585991563643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
