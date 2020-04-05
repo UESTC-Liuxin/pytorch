@@ -127,7 +127,7 @@ work_dirs/
 # dataset
 DATA/
 logs/
-
+runs/
 # zip
 *.zip
 *.rar
