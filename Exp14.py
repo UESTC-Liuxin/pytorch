@@ -25,9 +25,10 @@ BATCH_SIZE = 128
 LR=0.1
 
 transform_train = transforms.Compose(
-    [transforms.ToTensor(),
+    [
      transforms.RandomCrop(32, padding=4),  # 先四周填充0，在吧图像随机裁剪成32*32
      transforms.RandomHorizontalFlip(),  # 图像一半的概率翻转，一半的概率不翻转
+     transforms.ToTensor(),
      transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5)),
      # transforms.CenterCrop
      ] #3个通道的平均值和方差都取0.5
@@ -96,7 +97,7 @@ def adjust_learning_rate(optimizer,lr):
 
 if __name__ == '__main__':
     net = ResNet18()
-    epoch_list=[130,200,250]
+    epoch_list=[130,150,200,250]
     lr_index=0
     TIMESTAMP = time.strftime("%Y-%m-%d-%H-%M-%S")
     log_dir = 'logs/resnet18/' + TIMESTAMP
