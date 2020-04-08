@@ -134,11 +134,11 @@ if __name__ == '__main__':
     from tensorboardX import SummaryWriter
 
     TIMESTAMP = time.strftime("%Y-%m-%d-%H-%M-%S")
-    log_dir = 'logs/test/' + TIMESTAMP
+    log_dir = 'logs/resnet18/' + TIMESTAMP
     writer = SummaryWriter(log_dir=log_dir)
     net = ResNet18()
 
-    x=torch.rand(1,3,256, 256)
+    x=torch.rand(1,3,32, 32)
     out=net(x)
     print(net)
     # with writer:

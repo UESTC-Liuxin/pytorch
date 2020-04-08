@@ -33,7 +33,7 @@ transform = transforms.Compose(
 trainset =torchvision.datasets.CIFAR10(
     root=data_root,
     train=True,
-    download=False,
+    download=True,
     transform=transform
 )
 trainloader =  Data.DataLoader(
