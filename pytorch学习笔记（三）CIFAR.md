@@ -81,7 +81,7 @@ def data_analyze(dataset):
 
 <img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Exp12_1.png" style="zoom:50%;" />
 
-图片的信息，都是（28，28，3)的图片，同时在dataset直接读出来的也是numpy格式的（28，28，，3)的图片。
+图片的信息，都是（28，28，3)的图片，同时在dataset直接读出来的也是numpy格式的（32，32，，3)的图片。
 
 ![](https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Exp12_2.png)
 

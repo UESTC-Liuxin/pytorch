@@ -19,7 +19,7 @@ data_root=os.path.join(root,'DATA')
 
 # Hyper Parameters
 EPOCH = 10           # 训练整批数据多少次, 为了节约时间, 我们只训练一次
-BATCH_SIZE = 8
+BATCH_SIZE = 128
 LR = BATCH_SIZE*0.00125          # 学习率
 
 transform = transforms.Compose(
@@ -86,6 +86,7 @@ if __name__ == '__main__':
     with writer:
         writer.add_graph(net, (torch.rand(1,3,32, 32),))
     optimizer = torch.optim.SGD(net.parameters(), lr=LR,momentum=0.9)
+    lr_sch=torch.optim.lr_scheduler.StepLR(optimizer, 30, gamma=0.1, last_epoch=-1)
     loss_func = nn.CrossEntropyLoss()
 
 
