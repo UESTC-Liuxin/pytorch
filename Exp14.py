@@ -2,6 +2,7 @@ import os
 import time
 import torch
 import torchvision
+from torchvision.models import densenet121
 import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.utils.data as Data
@@ -96,11 +97,11 @@ def adjust_learning_rate(optimizer,lr):
 
 
 if __name__ == '__main__':
-    net = ResNet18()
+    net = densenet121(drop_rate=0.5,num_classes=10)
     epoch_list=[130,150,200,250]
     lr_index=0
     TIMESTAMP = time.strftime("%Y-%m-%d-%H-%M-%S")
-    log_dir = 'logs/resnet18/' + TIMESTAMP
+    log_dir = 'logs/densenet/' + TIMESTAMP
     writer = SummaryWriter(log_dir)
     #绘制网络框图
     with writer:
