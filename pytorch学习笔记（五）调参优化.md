@@ -10,8 +10,7 @@
 
 第一次实验是在自己设计的一个7层网络上进行的，2层卷机层，2层池化层，3层全连接层。训练过程未做任何处理，最后结果在40%。包括后来调整了很多参数，最后只能达到下面的效果。
 
-<img src="DATA/L2/C1.PNG" alt="C1" style="zoom: 67%;" /><img src="DATA/L2/C2.PNG" alt="C1" style="zoom: 67%;" />
-         <img src="DATA/L2/C3.PNG" alt="C3" style="zoom: 67%;" /><img src="DATA/L2/C4.PNG" alt="C4" style="zoom: 67%;" />
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/Cifar自定义网络.png" style="zoom:80%;" />
 
 从上面的图可以明显的看到，此模型的训练误差不能收敛到一个较低值，训练准确率 也上不去，说明此模型的复杂度完全不能够解决此问题，需要更换更深层次的网络。
 
@@ -19,9 +18,7 @@
 
 网络更换为了Resnet18时，最初在训练集上能达到80%的acc.
 
-  <img src="DATA/resnet18_base/1.PNG" alt="1" style="zoom:63%;" /><img src="DATA/resnet18_base/2.PNG" alt="2" style="zoom:55%;" />    
-
-<img src="DATA/resnet18_base/3.PNG" alt="3" style="zoom:55%;" /><img src="DATA/resnet18_base/4.PNG" alt="4" style="zoom:55%;" />
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/resnet18_init.png" style="zoom:80%;" />
 
 其实已经明显看出，模型已经在出现了严重的过拟合现象。这个时候应该想到的是进行过拟合处理，但是在做过拟合处理之前，我还进行了一个处理，就是lr_scheduler。
 
@@ -40,14 +37,10 @@ DenseNet还未来得及研究，实现是通过torchvision集成的API，最后�
 ### StepLR
 
 - batch size=64 ;step=20;gamma=0.2
-<img src="DATA/batchsize64_15_g0.05/1.png" alt="1" style="zoom: 90%;" />  <img src="DATA/batchsize64_15_g0.05/2.png" alt="2" style="zoom:90%;" />
-  <img src="DATA/batchsize64_15_g0.05/3.png" alt="3" style="zoom:90%;" />    <img src="DATA/batchsize64_15_g0.05/4.png" alt="4" style="zoom:90%;" /> 
 
 - batch size=64 ;step=15;gamma=0.1
 
-<img src="DATA/batchsize128_20_g0.2/1.png" alt="1" style="zoom:90%;" /><img src="DATA/batchsize128_20_g0.2/2.png" alt="1" style="zoom:90%;" />
-
-<img src="DATA/batchsize128_20_g0.2/3.png" alt="3" style="zoom: 90%;" /><img src="DATA/batchsize128_20_g0.2/4.png" alt="4" style="zoom:90%;" />
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/steplr.png" style="zoom:80%;" />
 
 ### 自定义lr_scheduler
 
@@ -62,10 +55,8 @@ def adjust_learning_rate(optimizer,lr):
 ```
 
 - batch size=200 ;step=[130,180,200];gamma=0.1
+- <img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/customized_lr.png" style="zoom:80%;" />
 
-<img src="DATA/batchsize128_cust_1/1.png" alt="1" style="zoom:50%;" />    <img src="DATA/batchsize128_cust_1/2.png" alt="2" style="zoom:52%;" />
-
-<img src="DATA/batchsize128_cust_1/3.png" alt="3" style="zoom:50%;" /> <img src="DATA/batchsize128_cust_1/4.png" alt="4" style="zoom:55%;" />
 
 明显看到，自定义的学习率函数表现出了一定的提升，但是整体效果还是不达标。
 
@@ -75,17 +66,13 @@ def adjust_learning_rate(optimizer,lr):
 
 ### 加入L2正则化
 
-<img src="DATA/L2/1.png" alt="1" style="zoom:50%;" /><img src="DATA/L2/2.png" alt="2" style="zoom:50%;" />
-
-<img src="DATA/L2/3.png" alt="3" style="zoom:50%;" /><img src="DATA/L2/4.png" alt="4" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/L2.png" style="zoom:80%;" />
 
 以上的图片显示了，在训练的
 
 ###  训练图像预处理
 
-<img src="DATA/L2/5.PNG" alt="5" style="zoom:50%;" /><img src="DATA/L2/6.PNG" alt="6" style="zoom:50%;" />
-
-<img src="DATA/L2/8.PNG" alt="8" style="zoom:50%;" /><img src="DATA/L2/7.PNG" alt="7" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/UESTC-Liuxin/pytorch/master/md_img/predeal.png" style="zoom:80%;" />
 
 ### dropout
 
